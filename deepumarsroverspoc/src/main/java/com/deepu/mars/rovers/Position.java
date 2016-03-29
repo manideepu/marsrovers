@@ -1,43 +1,12 @@
 package com.deepu.mars.rovers;
 
-public class Position implements PositionIF {
+public interface Position {
 
-	private Axis x;
-	private Axis y;
-	private Direction direction;
+	public Axis getX();
 
-	public Position(Axis x, Axis y, Direction direction) {
-		if (x == null || y == null || direction == null) {
-			throw new IllegalArgumentException("Position's attributes can't be null");
-		}
-		this.direction = direction;
-		this.x = x;
-		this.y = y;
-	}
+	public Axis getY();
 
-	protected void setDirectionRight() {
-		direction = direction.right();
-	}
+	public Direction getDirection();
 
-	protected void setDirectionLeft() {
-		direction = direction.left();
-	}
-
-	@Override
-	public String toString() {
-		return getX().getAxis() + " : " + getY().getAxis() + " : " + getDirection().name();
-	}
-
-	public Axis getX() {
-		return x;
-	}
-
-	public Axis getY() {
-		return y;
-	}
-
-	public Direction getDirection() {
-		return direction;
-	}
-
+	public void setDirection(Direction direction);
 }
